@@ -40,7 +40,7 @@ int main(void) {
 	int n = 6;
 	int p[] = { 30,35,15,5,10,20,25 };
 	
-	//创建动态的二维数组m和k
+	//创建动态的二维数组m和k，分别记录代价和切割点
 	int** m = (int**)malloc(sizeof(int*) * (n+1));
 	for (int i = 0; i < n + 1; i++) {
 		m[i] = (int*)malloc(sizeof(int) * (n + 1));
