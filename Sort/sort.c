@@ -1,6 +1,3 @@
-#include<stdio.h>
-#define SIZE(x) (sizeof(x) / sizeof(x[0]))
-
 void swap(int* a, int* b) { //使用时，要记得进行取地址操作
 	int temp = *a;
 	*a = *b;
@@ -118,12 +115,3 @@ void merge_sort(int arr[], int n) {
 	merge_sort_aux(arr, 0, n - 1);
 }
 
-
-int main(void) {
-	int arr[] = { 2,24,6,100,24,55,678,5674,24,100 };
-	merge_sort(arr, SIZE(arr));
-	for (int i = 0; i < SIZE(arr); i++) {
-		printf("%d ", arr[i]);
-	}
-
-}

@@ -15,10 +15,13 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="sort.c">
+    <ClCompile Include="stack_list.c">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="main.c">
+    <ClCompile Include="stack_static_array.c">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="stack_dynamic_array.c">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>

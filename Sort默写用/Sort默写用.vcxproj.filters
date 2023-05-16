@@ -15,10 +15,21 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="sort.c">
+    <ClInclude Include="sort_dictation.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="stack_dynamic_array.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="sort_dictation.c">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="main.c">
+    <ClCompile Include="main_dictation.c">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="stack_dynamic_array.c">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>

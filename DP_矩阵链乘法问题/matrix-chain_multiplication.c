@@ -33,23 +33,38 @@ void matrix_chain_order(int n,int p[],int* m[], int* s[]) {  //×¢Òâ¶þÎ¬Êý×éµÄ²ÎÊ
 			}
 		}
 	}
+}
 
+//´òÓ¡³Ë·¨·½°¸
+void print_optimal_parens(int* s[],int i,int j) {
+	if (i == j) {
+		printf("A%d", i);
+	}
+	else {
+		printf("(");
+		print_optimal_parens(s, i, s[i][j]);
+		print_optimal_parens(s, s[i][j] + 1, j);
+		printf(")");
+	}
 }
 
 int main(void) {
-	int n = 6;
-	int p[] = { 30,35,15,5,10,20,25 };
-	
+	int p[] = { 5,10,3,12,5,50,6 };
+	int n = sizeof(p) / sizeof(p[0]) - 1;
+
 	//´´½¨¶¯Ì¬µÄ¶þÎ¬Êý×émºÍk£¬·Ö±ð¼ÇÂ¼´ú¼ÛºÍÇÐ¸îµã
 	int** m = (int**)malloc(sizeof(int*) * (n+1));
 	for (int i = 0; i < n + 1; i++) {
 		m[i] = (int*)malloc(sizeof(int) * (n + 1));
 	}
-	int** k = (int**)malloc(sizeof(int*) * (n + 1));
+	int** s = (int**)malloc(sizeof(int*) * (n + 1));
 	for (int i = 0; i < n + 1; i++) {
-		k[i] = (int*)malloc(sizeof(int) * (n + 1));
+		s[i] = (int*)malloc(sizeof(int) * (n + 1));
 	}
-	matrix_chain_order(n, p, m, k);
+	matrix_chain_order(n, p, m, s);
 
-	printf("good\n");
+	//´òÓ¡³Ë·¨·½°¸
+	print_optimal_parens(s, 1, n);
+
+	printf("\nend\n");
 }
