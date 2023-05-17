@@ -10,5 +10,6 @@ int main(void) {
 	bts_insert(tree, 57);
 
 	bts_delete(tree, 5);
+	TreeNode* search_node=bts_search(tree, 42);
 	return 0;
 }
