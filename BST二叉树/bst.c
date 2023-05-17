@@ -126,4 +126,6 @@ void bts_delete(BTS* tree, K val) {
 	}
 }
 
-BTS* bts_destroy(BTS* tree);
+void bts_destroy(BTS* tree) {
+
+}

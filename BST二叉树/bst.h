@@ -14,7 +14,7 @@ typedef struct {
 }BTS;
 
 BTS* bts_create();
+void bts_destroy(BTS* tree);
 void bts_insert(BTS* tree, K val);
 TreeNode* bts_search(BTS* tree, K val);
 void bts_delete(BTS* tree, K val);
-BTS* bts_destroy(BTS* tree);
