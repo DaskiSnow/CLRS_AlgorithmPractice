@@ -1,39 +1,21 @@
-#include<stdio.h>
-#include<stdlib.h>
-#include<stdbool.h>
-#define INIT_CAPACITY 8
-#define THRESHOLD 1024
+#include "stack_dynamic_array.h"
 
-typedef struct {
-	int* data;
-	int top;
-	int capacity;
-}SqStack;
-
-void stack_init(SqStack* pstack);
-void stack_push(SqStack* pstack, int val);
-int stack_pop(SqStack* pstack);
-int stack_peek(SqStack stack);
-bool stack_empty(SqStack stack);
-void stack_expend(SqStack* pstack);
-void stack_destroy(SqStack* ptsack);
-
-int main(void) {
-	SqStack stack;
-	stack_init(&stack);
-	for (int i = 0; i < 2000; i++) {
-		stack_push(&stack, i);
-	}
-	bool empty = stack_empty(stack);
-	int pop_num = stack_pop(&stack);
-	int peek_num = stack_peek(stack);
-	pop_num = stack_pop(&stack);
-	peek_num = stack_peek(stack);
-	pop_num = stack_pop(&stack);
-	empty = stack_empty(stack);
-
-	return 0;
-}
+//int main(void) {
+//	SqStack stack;
+//	stack_init(&stack);
+//	for (int i = 0; i < 2000; i++) {
+//		stack_push(&stack, i);
+//	}
+//	bool empty = stack_empty(stack);
+//	int pop_num = stack_pop(&stack);
+//	int peek_num = stack_peek(stack);
+//	pop_num = stack_pop(&stack);
+//	peek_num = stack_peek(stack);
+//	pop_num = stack_pop(&stack);
+//	empty = stack_empty(stack);
+//
+//	return 0;
+//}
 
 void stack_init(SqStack* pstack) {
 	pstack->data = (int*)malloc(sizeof(int) * INIT_CAPACITY);
