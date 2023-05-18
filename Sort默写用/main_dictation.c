@@ -6,6 +6,7 @@ int main(void) {
 	//direct_insertion_sort(arr, SIZE(arr));
 	//selection_sort(arr,0,SIZE(arr)-1);
 	//heap_sort(arr, SIZE(arr));
-	merge_sort(arr, 0, SIZE(arr) - 1);
+	//merge_sort(arr, 0, SIZE(arr) - 1);
+	quick_sort(arr, SIZE(arr));
 	print_arr(arr, SIZE(arr));
 }

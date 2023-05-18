@@ -68,7 +68,8 @@ void bubble_sort(int arr[], int n) {
 	}
 }
 
-int partition(int arr[], int low, int high) {
+// 分区算法1: 较为低效。不断访问数组两, 当数组较大时会出现cache抖动现象, 极大降低算法效率
+int partition1(int arr[], int low, int high) {
 	int pivot = arr[low];
 	while (low < high) {
 		while (low < high && arr[high] >= pivot) high--;
@@ -80,11 +81,31 @@ int partition(int arr[], int low, int high) {
 	return low;
 }
 
-void quick_sort(int arr[], int low, int high) {
+// 分区算法2: 避免抖动现象, 并且实现更简单
+int partition2(int arr[], int low, int high) {  
+	int pivot = arr[high];  
+	int store_idx = low;   
+	int i = low;            
+	while (i < high) {
+		if (arr[i] < pivot) {
+			swap(&arr[store_idx], &arr[i]);
+			store_idx++;
+		}
+		i++;
+	} // i == high
+	swap(&arr[store_idx], &arr[high]);
+	return store_idx;
+}
+
+void quick_sort_aux(int arr[], int low, int high) {
 	if (low >= high) return;
-	int p = partition(arr, low, high);
-	quick_sort(arr, low, p - 1);
-	quick_sort(arr, p + 1, high);
+	int p = partition2(arr, low, high);
+	quick_sort_aux(arr, low, p - 1);
+	quick_sort_aux(arr, p + 1, high);
+}
+
+void quick_sort(int arr[], int n) {
+	quick_sort_aux(arr, 0, n - 1);
 }
 
 // quick_sort的非递归写法(利用栈),思想上像层序遍历
@@ -96,7 +117,7 @@ void non_recursive_quick_sort(int arr[], int low, int high) {
 	while (!stack_empty(stack)) {
 		int high = stack_pop(&stack);
 		int low = stack_pop(&stack);
-		int p = partition(arr, low, high);
+		int p = partition1(arr, low, high);
 		if (low < p - 1) {
 			stack_push(&stack, low);
 			stack_push(&stack, p - 1);
@@ -110,7 +131,7 @@ void non_recursive_quick_sort(int arr[], int low, int high) {
 }
 
 
-void quick_sort_2(int arr[], int l, int r) {  //一开始自己写的合并在一起的写法
+void quick_sort_merge(int arr[], int l, int r) {  //一开始自己写的合并在一起的写法
 	if (l >= r) return;
 	int pivot = arr[l];
 	int i = l, j = r;
