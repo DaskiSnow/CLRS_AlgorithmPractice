@@ -1,15 +1,20 @@
 #include "bst.h"
 
 int main(void) {
-	BTS* tree = bts_create();
-	bts_insert(tree, 9);
-	bts_insert(tree, 5);
-	bts_insert(tree, 42);
-	bts_insert(tree, 3);
-	bts_insert(tree, 13);
-	bts_insert(tree, 57);
+	BST* tree = bst_create();
+	bst_insert(tree, 9);
+	bst_insert(tree, 5);
+	bst_insert(tree, 42);
+	bst_insert(tree, 3);
+	bst_insert(tree, 13);
+	bst_insert(tree, 57);
 
-	bts_delete(tree, 5);
-	TreeNode* search_node=bts_search(tree, 42);
+	TreeNode* search_node=bst_search(tree, 42);
+	bst_inorder(tree);
+	bst_preorder(tree);
+	bst_postorder(tree);
+	
+	bst_destroy(tree);
+
 	return 0;
 }
