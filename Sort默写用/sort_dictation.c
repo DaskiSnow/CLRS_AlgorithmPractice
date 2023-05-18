@@ -129,7 +129,7 @@ void quick_sort_2(int arr[], int l, int r) {  //一开始自己写的合并在一起的写法
 	quick_sort(arr, i + 1, r);
 }
 
-void select_sort(int arr[], int n) {
+void selection_sort(int arr[], int n) {
 	for (int i = 0; i < n - 1; i++) {
 		for (int j = i + 1; j < n; j++) {
 			if (arr[i] > arr[j]) {

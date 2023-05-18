@@ -1,15 +1,15 @@
 #include "bst.h"
 
-BTS* bts_create() {
-	BTS* tree = (BTS*)calloc(1, sizeof(BTS));
+BST* bst_create() {
+	BST* tree = (BST*)calloc(1, sizeof(BST));
 	if (!tree) {
-		printf("calloc failed in bts_create.\n");
+		printf("calloc failed in bst_create.\n");
 		exit(1);
 	}
 	return tree;
 }
 
-void bts_insert(BTS* tree, K val) {
+void bst_insert(BST* tree, K val) {
 	// 查找插入位置(若已存在不做处理)
 	TreeNode* prev = NULL;
 	TreeNode* curr = tree->root;
@@ -50,7 +50,7 @@ void bts_insert(BTS* tree, K val) {
 	}
 }
 
-TreeNode* bts_search(BTS* tree, K val) {
+TreeNode* bst_search(BST* tree, K val) {
 	// 查找结点位置
 	TreeNode* curr = tree->root;
 	int cmp;
@@ -70,7 +70,7 @@ TreeNode* bts_search(BTS* tree, K val) {
 	return NULL;
 }
 
-void bts_delete(BTS* tree, K val) {
+void bst_delete(BST* tree, K val) {
 	// 查找结点位置
 	TreeNode* parent = NULL;
 	TreeNode* curr = tree->root;
@@ -120,12 +120,58 @@ void bts_delete(BTS* tree, K val) {
 		parent->lchild = child;
 		free(curr);
 	}
-	else { // 欲删结点为右结点
+	else { // 欲删结点为右结点(转化后可能遇到curr->val == parent->val情况, 在此情况下依然正确)
 		parent->rchild = child;
 		free(curr);
 	}
 }
 
-void bts_destroy(BTS* tree) {
-
+// 递归实现销毁
+void destroy(TreeNode* node) {
+	if (!node) return;
+	destroy(node->lchild);
+	destroy(node->rchild);
+	free(node);
 }
+
+
+void bst_destroy(BST* tree) {
+	destroy(tree->root);
+}
+
+void preorder(TreeNode* node) {
+	if (!node) return;
+	printf("%d ", node->val);
+	preorder(node->lchild);
+	preorder(node->rchild);
+}
+
+void bst_preorder(BST* tree) {
+	preorder(tree->root);  
+	printf("\n");
+}
+
+void inorder(TreeNode* node) {
+	if (!node) return;
+	inorder(node->lchild);
+	printf("%d ", node->val);
+	inorder(node->rchild);
+}
+
+void bst_inorder(BST* tree) {
+	inorder(tree->root);
+	printf("\n");
+}
+
+void postorder(TreeNode* node) {
+	if (!node) return;
+	postorder(node->lchild);
+	postorder(node->rchild);
+	printf("%d ", node->val);
+}
+
+void bst_postorder(BST* tree) {
+	postorder(tree->root);
+	printf("\n");
+}
+

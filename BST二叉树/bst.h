@@ -11,10 +11,13 @@ typedef struct tree_node {
 
 typedef struct {
 	TreeNode* root;
-}BTS;
+}BST;
 
-BTS* bts_create();
-void bts_destroy(BTS* tree);
-void bts_insert(BTS* tree, K val);
-TreeNode* bts_search(BTS* tree, K val);
-void bts_delete(BTS* tree, K val);
+BST* bst_create();
+void bst_destroy(BST* tree);
+void bst_insert(BST* tree, K val);
+TreeNode* bst_search(BST* tree, K val);
+void bst_delete(BST* tree, K val);
+void bst_preorder(BST* tree);
+void bst_inorder(BST* tree);
+void bst_postorder(BST* tree);
