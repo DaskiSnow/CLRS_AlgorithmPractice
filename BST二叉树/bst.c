@@ -120,7 +120,7 @@ void bst_delete(BST* tree, K val) {
 		parent->lchild = child;
 		free(curr);
 	}
-	else { // 欲删结点为右结点
+	else { // 欲删结点为右结点(转化后可能遇到curr->val == parent->val情况, 在此情况下依然正确)
 		parent->rchild = child;
 		free(curr);
 	}
