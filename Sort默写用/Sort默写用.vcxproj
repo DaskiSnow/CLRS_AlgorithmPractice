@@ -129,11 +129,14 @@
   <ItemGroup>
     <ClInclude Include="sort_dictation.h" />
     <ClInclude Include="stack_dynamic_array.h" />
+    <ClInclude Include="test.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main_dictation.c" />
+    <ClCompile Include="main_for_test.c" />
     <ClCompile Include="sort_dictation.c" />
     <ClCompile Include="stack_dynamic_array.c" />
+    <ClCompile Include="test.c" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <stdlib.h>
 
 void swap(int* a, int* b);
 void direct_insertion_sort(int arr[], int n);

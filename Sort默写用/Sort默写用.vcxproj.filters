@@ -21,6 +21,9 @@
     <ClInclude Include="stack_dynamic_array.h">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="test.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="sort_dictation.c">
@@ -30,6 +33,12 @@
       <Filter>源文件</Filter>
     </ClCompile>
     <ClCompile Include="stack_dynamic_array.c">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="test.c">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="main_for_test.c">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>

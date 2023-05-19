@@ -58,13 +58,17 @@ void shell_sort(int arr[], int n) {
 	}
 }
 
+// 遗忘点: 能够提前结束排序
 void bubble_sort(int arr[], int n) {
 	for (int i = 0; i < n - 1; i++) {
+		bool is_sorted = true;
 		for (int j = 0; j <= n - 2 - i; j++) {
 			if (arr[j] > arr[j + 1]) {
 				swap(&arr[j], &arr[j + 1]);
+				is_sorted = false;
 			}
 		}
+		if (is_sorted) return;
 	}
 }
 
@@ -152,30 +156,39 @@ void quick_sort_merge(int arr[], int l, int r) {  //一开始自己写的合并在一起的写
 
 void selection_sort(int arr[], int n) {
 	for (int i = 0; i < n - 1; i++) {
+		int min_idx = i;
 		for (int j = i + 1; j < n; j++) {
 			if (arr[i] > arr[j]) {
-				swap(&arr[i], &arr[j]);
+				min_idx = j;
 			}
 		}
+		swap(&arr[i], &arr[min_idx]);
 	}
 }
 
 // 左孩子 2i+1  右孩子 2i+2  从0开始
 void heapify(int arr[], int n, int k) {
+	int largest_idx = k;
 	int l_idx = 2 * k + 1;
 	int r_idx = 2 * k + 2;
-	int largest_idx = k;
 
-	if (l_idx < n && arr[l_idx] > arr[largest_idx]) {
-		largest_idx = l_idx;
-	}
-	if (r_idx < n && arr[r_idx] > arr[largest_idx]) {
-		largest_idx = r_idx;
-	}
-	if (largest_idx != k) {
-		swap(&arr[k], &arr[largest_idx]);
-		heapify(arr, n, largest_idx);
-	}
+
+	while (l_idx < n) {
+		if (l_idx < n && arr[l_idx] > arr[largest_idx]) {
+			largest_idx = l_idx;
+		}
+		if (r_idx < n && arr[r_idx] > arr[largest_idx]) {
+			largest_idx = r_idx;
+		}
+		if (largest_idx == k) break;
+		else {
+			swap(&arr[k], &arr[largest_idx]);
+			k = largest_idx;
+			l_idx = 2 * k + 1;
+			r_idx = 2 * k + 2;
+		}
+	} // l_idx == n || largest_idx == k
+
 	return;
 }
 

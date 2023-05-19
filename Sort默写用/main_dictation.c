@@ -1,12 +1,16 @@
 #include "sort_dictation.h"
+#include "test.h"
+#include<stdlib.h>
 #define SIZE(x) (sizeof(x)/sizeof(x[0]))
 
 int main(void) {
-	int arr[] = { 1,3,5,34,34,13,54,88,952,100,200 };
+	//int arr[] = { 1,3,5,34,34,13,54,88,952,100,200 };
 	//direct_insertion_sort(arr, SIZE(arr));
 	//selection_sort(arr,0,SIZE(arr)-1);
 	//heap_sort(arr, SIZE(arr));
 	//merge_sort(arr, 0, SIZE(arr) - 1);
-	quick_sort(arr, SIZE(arr));
-	print_arr(arr, SIZE(arr));
+	//quick_sort(arr, SIZE(arr));
+	//bubble_sort(arr, SIZE(arr));
+	//print_arr(arr, SIZE(arr));
+
 }
