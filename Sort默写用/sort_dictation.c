@@ -9,14 +9,14 @@ void swap(int* a, int* b) {
 
 void direct_insertion_sort(int arr[], int n) {
 	for (int i = 1; i < n; i++) {
-		int tmp = arr[i]; //±£´æ´ı²åÈëÔªËØ
+		int tmp = arr[i]; //ä¿å­˜å¾…æ’å…¥å…ƒç´ 
 		int j;
 		for (j = i-1; j >= 0; j--) {
 			if (arr[j] <= tmp) {
 				break;
 			}
-			arr[j + 1] = arr[j];// ±ßÕÒ±ßÒÆ¶¯ÔªËØ
-		}// arr[j] <= tmp, Ó¦²åÈëµ½j+1Î»ÖÃ
+			arr[j + 1] = arr[j];// è¾¹æ‰¾è¾¹ç§»åŠ¨å…ƒç´ 
+		}// arr[j] <= tmp, åº”æ’å…¥åˆ°j+1ä½ç½®
 		arr[j + 1] = tmp;
 	}
 }
@@ -26,17 +26,17 @@ void binary_insertion_sort(int arr[], int n) {
 		int tmp = arr[i];
 		int low = 0;
 		int high = i-1;
-		while (low <= high) {  //×¢ÒâÓĞµÈºÅ
+		while (low <= high) {  //æ³¨æ„æœ‰ç­‰å·
 			int mid = (low + high) / 2;
 			if (tmp < arr[mid]) {
 				high = mid - 1;
 			}
-			else {  // tmp >= arr[mid],±£Ö¤ÁËÎÈ¶¨ĞÔ
+			else {  // tmp >= arr[mid],ä¿è¯äº†ç¨³å®šæ€§
 				low = mid + 1;
 			}
-		}// low > high, Ó¦²åÈëµ½lowÎ»ÖÃ
+		}// low > high, åº”æ’å…¥åˆ°lowä½ç½®
 
-		//ÒÆ¶¯ÔªËØ
+		//ç§»åŠ¨å…ƒç´ 
 		for (int k = i; k >= low + 1; k--) {
 			arr[k] = arr[k - 1];
 		}
@@ -51,8 +51,8 @@ void shell_sort(int arr[], int n) {
 			int tmp = arr[i];
 			int j;
 			for (j = i - gap; j >= 0 && arr[j]>tmp; j-=gap) {
-				arr[j + gap] = arr[j]; // ÒÆ¶¯ÔªËØ
-			}// arr[j] <= tmp, Ó¦²åÈëµ½j+gapµÄÎ»ÖÃ
+				arr[j + gap] = arr[j]; // ç§»åŠ¨å…ƒç´ 
+			}// arr[j] <= tmp, åº”æ’å…¥åˆ°j+gapçš„ä½ç½®
 			arr[j + gap] = tmp;
 		}
 	}
@@ -68,7 +68,7 @@ void bubble_sort(int arr[], int n) {
 	}
 }
 
-// ·ÖÇøËã·¨1: ½ÏÎªµÍĞ§¡£²»¶Ï·ÃÎÊÊı×éÁ½, µ±Êı×é½Ï´óÊ±»á³öÏÖcache¶¶¶¯ÏÖÏó, ¼«´ó½µµÍËã·¨Ğ§ÂÊ
+// åˆ†åŒºç®—æ³•1: è¾ƒä¸ºä½æ•ˆã€‚ä¸æ–­è®¿é—®æ•°ç»„ä¸¤, å½“æ•°ç»„è¾ƒå¤§æ—¶ä¼šå‡ºç°cacheæŠ–åŠ¨ç°è±¡, æå¤§é™ä½ç®—æ³•æ•ˆç‡
 int partition1(int arr[], int low, int high) {
 	int pivot = arr[low];
 	while (low < high) {
@@ -81,7 +81,7 @@ int partition1(int arr[], int low, int high) {
 	return low;
 }
 
-// ·ÖÇøËã·¨2: ±ÜÃâ¶¶¶¯ÏÖÏó, ²¢ÇÒÊµÏÖ¸ü¼òµ¥
+// åˆ†åŒºç®—æ³•2: é¿å…æŠ–åŠ¨ç°è±¡, å¹¶ä¸”å®ç°æ›´ç®€å•
 int partition2(int arr[], int low, int high) {  
 	int pivot = arr[high];  
 	int store_idx = low;   
@@ -108,7 +108,7 @@ void quick_sort(int arr[], int n) {
 	quick_sort_aux(arr, 0, n - 1);
 }
 
-// quick_sortµÄ·Çµİ¹éĞ´·¨(ÀûÓÃÕ»),Ë¼ÏëÉÏÏñ²ãĞò±éÀú
+// quick_sortçš„éé€’å½’å†™æ³•(åˆ©ç”¨æ ˆ),æ€æƒ³ä¸Šåƒå±‚åºéå†
 void non_recursive_quick_sort(int arr[], int low, int high) {
 	SqStack stack;
 	stack_init(&stack);
@@ -131,7 +131,7 @@ void non_recursive_quick_sort(int arr[], int low, int high) {
 }
 
 
-void quick_sort_merge(int arr[], int l, int r) {  //Ò»¿ªÊ¼×Ô¼ºĞ´µÄºÏ²¢ÔÚÒ»ÆğµÄĞ´·¨
+void quick_sort_merge(int arr[], int l, int r) {  //ä¸€å¼€å§‹è‡ªå·±å†™çš„åˆå¹¶åœ¨ä¸€èµ·çš„å†™æ³•
 	if (l >= r) return;
 	int pivot = arr[l];
 	int i = l, j = r;
@@ -160,7 +160,7 @@ void selection_sort(int arr[], int n) {
 	}
 }
 
-// ×óº¢×Ó 2i+1  ÓÒº¢×Ó 2i+2  ´Ó0¿ªÊ¼
+// å·¦å­©å­ 2i+1  å³å­©å­ 2i+2  ä»0å¼€å§‹
 void heapify(int arr[], int n, int k) {
 	int l_idx = 2 * k + 1;
 	int r_idx = 2 * k + 2;
@@ -180,16 +180,16 @@ void heapify(int arr[], int n, int k) {
 }
 
 void heap_sort(int arr[], int n) {
-	// ´Óµ¹ÊıµÚÒ»¸ö·ÖÖ§½Úµã¿ªÊ¼½¨´ó¸ù¶Ñ
-	for (int i = (n - 1) / 2; i >= 0; i--) {
+	// ä»å€’æ•°ç¬¬ä¸€ä¸ªåˆ†æ”¯èŠ‚ç‚¹å¼€å§‹å»ºå¤§æ ¹å †
+	for (int i = (n - 1 - 1) / 2; i >= 0; i--) {
 		heapify(arr, n, i);
 	}
 
-	// ÅÅĞò
-	// ²»¶Ï½»»»Ê×Î²ÔªËØÅÅĞò
+	// æ’åº
+	// ä¸æ–­äº¤æ¢é¦–å°¾å…ƒç´ æ’åº
 	for (int j = n - 1; j > 0; j--) {
 		swap(&arr[0], &arr[j]);
-		heapify(arr, j, 0);  // ×¢Òâ´«ÈëµÄnÒª²»¶Ï¼õÉÙ,µÚÒ»´ÎÖ´ĞĞÊ±Îªn-1
+		heapify(arr, j, 0);  // æ³¨æ„ä¼ å…¥çš„nè¦ä¸æ–­å‡å°‘,ç¬¬ä¸€æ¬¡æ‰§è¡Œæ—¶ä¸ºn-1
 	}
 }
 
@@ -213,7 +213,7 @@ void merge(int arr[], int left, int mid, int right) {
 		tmp[k++] = arr[j++];
 	}
 
-	// ¸´ÖÆÊı×é
+	// å¤åˆ¶æ•°ç»„
 	for (int z = 0; z < right - left + 1; z++){
 		arr[left + z] = tmp[z];
 	}
