@@ -86,7 +86,7 @@ int partition2(int arr[], int low, int high) {
 	int pivot = arr[high];  
 	int store_idx = low;   
 	int i = low;            
-	while (i < high) {
+	while (i <= high) {
 		if (arr[i] < pivot) {
 			swap(&arr[store_idx], &arr[i]);
 			store_idx++;
